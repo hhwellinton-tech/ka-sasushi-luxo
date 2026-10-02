@@ -3,373 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KA-SÁ SUSHI — Cardápio Premium Exclusivo</title>
-  <meta name="description" content="Cardápio premium exclusivo do KA-SÁ SUSHI. Experiência gastronômica premium com o melhor da culinária Edomae." />
+  <title>KA-SÁSUSHI — Luxury Menu</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🍣</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --bg-light: #131210;
-      --gold: #d4af37;
-      --gold-dark: #b8860b;
-      --gold-light: #e8d4a8;
-      --text: #f5f1ed;
-      --text-muted: rgba(245, 241, 237, 0.75);
-      --text-light: rgba(245, 241, 237, 0.55);
-      --line: rgba(212, 175, 55, 0.15);
-      --line-dark: rgba(255, 255, 255, 0.06);
+      --bg: #080808;
+      --panel: rgba(255,255,255,0.02);
+      --gold: #c8a882;
+      --gold-soft: #f0d9b3;
+      --text: #f4efe8;
+      --muted: rgba(255,255,255,0.65);
+      --line: rgba(255,255,255,0.08);
     }
-    
-    * { box-sizing: border-box; }
-    
-    html { 
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-    
+    html { scroll-behavior: smooth; }
     body {
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.04), transparent 40%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
     }
-    
-    .font-display { font-family: 'Playfair Display', serif; font-weight: 800; letter-spacing: -0.02em; }
-    .font-heading { font-family: 'Cinzel', serif; font-weight: 600; }
-    
+    .font-heading { font-family: 'Cinzel', serif; }
     .gold { color: var(--gold); }
-    .gold-text { background: linear-gradient(135deg, #d4af37 0%, #e8d4a8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    
+    .gold-bg { background: var(--gold); }
     .glass {
-      background: rgba(13, 12, 10, 0.85);
+      background: rgba(15,15,15,0.72);
       border: 1px solid var(--line);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(14px);
     }
-    
-    .glass-gold {
-      background: rgba(13, 12, 10, 0.9);
-      border: 1.5px solid rgba(212, 175, 55, 0.3);
-      backdrop-filter: blur(16px);
-    }
-    
     .menu-card {
-      background: rgba(19, 18, 16, 0.6);
-      border: 1px solid var(--line-dark);
-      transition: all .3s cubic-bezier(0.23, 1, 0.320, 1);
-      position: relative;
-      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
     }
-    
-    .menu-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity .3s ease;
-      pointer-events: none;
-    }
-    
     .menu-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(212, 175, 55, 0.4);
-      box-shadow: 0 32px 60px rgba(0, 0, 0, 0.4), 0 0 60px rgba(212, 175, 55, 0.1);
-      background: rgba(19, 18, 16, 0.8);
+      transform: translateY(-4px);
+      border-color: rgba(200,168,130,0.55);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.18);
     }
-    
-    .menu-card:hover::before {
-      opacity: 1;
-    }
-    
     .hero-pattern {
       background-image:
-        linear-gradient(135deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0.85) 100%),
-        url('https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1600&q=90');
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
-      background-position: center 30%;
-      background-attachment: fixed;
+      background-position: center;
     }
-    
     .pill {
-      letter-spacing: .3em;
+      letter-spacing: .28em;
       text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 600;
-      color: rgba(212, 175, 55, 0.8);
-      display: inline-block;
-    }
-    
-    .section-divider {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-      margin: 4rem 0;
-    }
-    
-    .price-badge {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.05) 100%);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      color: var(--gold);
-    }
-    
-    .btn-add {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
-      border: 1.5px solid rgba(212, 175, 55, 0.4);
-      color: var(--gold-light);
-      transition: all .3s ease;
-      font-weight: 500;
-      letter-spacing: .05em;
-    }
-    
-    .btn-add:hover {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0.15) 100%);
-      border-color: rgba(212, 175, 55, 0.6);
-      color: var(--gold);
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
-      transform: translateY(-2px);
-    }
-    
-    .section-title {
-      position: relative;
-      display: inline-block;
-      font-size: 2.5rem;
-      line-height: 1.1;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      border-radius: 2px;
-    }
-    
-    @media (max-width: 768px) {
-      .hero-pattern {
-        background-attachment: scroll;
-        background-position: center 40%;
-      }
-      .section-title {
-        font-size: 1.75rem;
-      }
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
     }
   </style>
 </head>
-<body class="pb-32">
+<body class="pb-28">
 
-  <!-- HERO HEADER -->
-  <header class="hero-pattern relative min-h-screen md:h-screen flex items-center overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]"></div>
+  <header class="hero-pattern relative h-[92vh] overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent"></div>
 
-    <!-- Navigation -->
-    <nav class="absolute top-0 left-0 right-0 z-40 px-6 md:px-16 py-5 md:py-8 glass-gold">
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full border-2 border-[#d4af37] bg-[#0a0a0a] flex items-center justify-center text-lg">🍣</div>
-          <div>
-            <div class="font-display text-2xl gold-text">KA-SÁ</div>
-            <div class="text-xs tracking-widest text-[#d4af37]">SUSHI PREMIUM</div>
-          </div>
-        </div>
-        <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-widest">
-          <a href="#entradas" class="text-white/60 hover:text-[#d4af37] transition duration-300">Entradas</a>
-          <a href="#uramaki" class="text-white/60 hover:text-[#d4af37] transition duration-300">Uramaki</a>
-          <a href="#hossomaki" class="text-white/60 hover:text-[#d4af37] transition duration-300">Hossomaki</a>
-          <a href="#temaki" class="text-white/60 hover:text-[#d4af37] transition duration-300">Temaki</a>
-          <a href="#sobremesa" class="text-white/60 hover:text-[#d4af37] transition duration-300">Sobremesas</a>
-        </div>
+    <nav class="absolute top-0 left-0 right-0 z-20 px-6 md:px-16 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full border border-white/15 bg-black/20 flex items-center justify-center text-xs text-[#d9b37b]">鮨</div>
+        <div class="font-heading text-xl tracking-[0.22em]">KA-SÁ<span class="gold">SUSHI</span></div>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[0.26em] text-white/60">
+        <a href="#entradas">Entradas</a>
+        <a href="#uramaki">Uramaki</a>
+        <a href="#hossomaki">Hossomaki</a>
+        <a href="#sobremesa">Sobremesas</a>
       </div>
     </nav>
 
-    <!-- Hero Content -->
-    <div class="relative z-10 w-full px-6 md:px-20 py-20 md:py-0">
-      <div class="max-w-3xl">
-        <div class="pill mb-6">Edomae · Tradição Oriental · Excelência</div>
-        <h1 class="font-display text-5xl md:text-8xl leading-tight md:leading-none mb-6 text-white">
-          KA-SÁ<br><span class="gold-text">SUSHI</span>
+    <div class="relative z-10 h-full flex items-end px-6 md:px-20 pb-20">
+      <div class="max-w-xl">
+        <div class="pill mb-4">Edomae · Tradição oriental</div>
+        <h1 class="font-heading text-[52px] md:text-[88px] leading-none">
+          KA-SÁ<span class="gold">SUSHI</span>
         </h1>
-        <p class="text-lg md:text-2xl text-white/80 font-light italic max-w-2xl leading-relaxed mb-8">
-          "Onde cada gesto é uma tradição. Onde cada peixe conta uma história."
-        </p>
-        <div class="flex gap-4">
-          <button class="btn-add px-8 py-3 rounded-full text-sm font-semibold">Explorar Cardápio</button>
-          <a href="#sobremesa" class="px-8 py-3 rounded-full border border-white/30 text-white hover:border-[#d4af37] hover:text-[#d4af37] transition">Conhecer o Chef</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-      <div class="w-6 h-10 border-2 border-[#d4af37]/40 rounded-full flex justify-center p-2">
-        <div class="w-1 h-2 bg-[#d4af37] rounded-full"></div>
+        <p class="mt-5 italic text-white/70 text-base md:text-lg">“Carregue a tradição em seu bolso.”</p>
       </div>
     </div>
   </header>
 
-  <main class="px-6 md:px-20 py-20 md:py-28 max-w-7xl mx-auto">
-    
-    <!-- ENTRADAS -->
-    <section id="entradas" class="mb-20">
-      <div class="flex items-end gap-4 mb-12">
-        <span class="text-5xl opacity-50">前</span>
-        <div>
-          <h2 class="section-title">Entradas</h2>
-          <p class="text-white/50 text-sm mt-3">Abertura elegante para a experiência culinária</p>
-        </div>
+  <main class="px-6 md:px-20 py-16">
+    <section id="entradas" class="pt-12">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-[#8a1d1d]/70 text-2xl">前</span>
+        <h2 class="font-heading text-[30px] tracking-[0.08em]">Entradas</h2>
       </div>
-      <div class="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="list-entradas"></div>
+      <div id="list-entradas" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- URAMAKI -->
-    <section id="uramaki" class="mb-20">
-      <div class="flex items-end gap-4 mb-12">
-        <span class="text-5xl opacity-50">巻</span>
-        <div>
-          <h2 class="section-title">Uramaki</h2>
-          <p class="text-white/50 text-sm mt-3">Rolos invertidos com técnica refinada</p>
-        </div>
+    <section id="uramaki" class="pt-18">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-[#8a1d1d]/70 text-2xl">巻</span>
+        <h2 class="font-heading text-[30px] tracking-[0.08em]">Uramaki</h2>
       </div>
-      <div class="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="list-uramaki"></div>
+      <div id="list-uramaki" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- HOSSOMAKI -->
-    <section id="hossomaki" class="mb-20">
-      <div class="flex items-end gap-4 mb-12">
-        <span class="text-5xl opacity-50">細</span>
-        <div>
-          <h2 class="section-title">Hossomaki</h2>
-          <p class="text-white/50 text-sm mt-3">Tradição em forma pura e delicada</p>
-        </div>
+    <section id="hossomaki" class="pt-18">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-[#8a1d1d]/70 text-2xl">細</span>
+        <h2 class="font-heading text-[30px] tracking-[0.08em]">Hossomaki</h2>
       </div>
-      <div class="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="list-hossomaki"></div>
+      <div id="list-hossomaki" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- TEMAKI -->
-    <section id="temaki" class="mb-20">
-      <div class="flex items-end gap-4 mb-12">
-        <span class="text-5xl opacity-50">手</span>
-        <div>
-          <h2 class="section-title">Temaki</h2>
-          <p class="text-white/50 text-sm mt-3">Cones artesanais com personalidade</p>
-        </div>
+    <section id="temaki" class="pt-18">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-[#8a1d1d]/70 text-2xl">手</span>
+        <h2 class="font-heading text-[30px] tracking-[0.08em]">Temaki</h2>
       </div>
-      <div class="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="list-temaki"></div>
+      <div id="list-temaki" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- SOBREMESAS -->
-    <section id="sobremesa" class="mb-20">
-      <div class="flex items-end gap-4 mb-12">
-        <span class="text-5xl opacity-50">甘</span>
-        <div>
-          <h2 class="section-title">Sobremesas</h2>
-          <p class="text-white/50 text-sm mt-3">Encerramento sublime da experiência</p>
-        </div>
+    <section id="sobremesa" class="pt-18">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-[#8a1d1d]/70 text-2xl">甘</span>
+        <h2 class="font-heading text-[30px] tracking-[0.08em]">Sobremesas</h2>
       </div>
-      <div class="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="list-sobremesa"></div>
+      <div id="list-sobremesa" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
-
   </main>
 
-  <!-- MASTER CHEF SECTION -->
-  <section class="px-6 md:px-20 py-20 md:py-28 border-t border-[#d4af37]/20 bg-gradient-to-b from-[#0a0a0a] to-[#131210]">
+  <footer class="mt-16 border-t border-white/10 bg-[#0b0b0b] px-6 md:px-20 py-16">
     <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="text-center md:text-left">
-          <div class="w-32 h-32 md:w-40 md:h-40 mx-auto md:mx-0 rounded-full border-2 border-[#d4af37] bg-[#131210] flex items-center justify-center text-6xl shadow-lg shadow-[#d4af37]/20">匠</div>
+          <div class="w-14 h-14 mx-auto md:mx-0 rounded-full border border-[#c8a882]/40 bg-[#171a2a] flex items-center justify-center text-[#d8b280] font-heading text-2xl">匠</div>
+          <h3 class="mt-5 font-heading text-4xl">Ismael Klann</h3>
+          <p class="mt-2 pill !tracking-[0.25em] text-[#c8a882]">O SUSHI MAN</p>
         </div>
-        <div>
-          <div class="pill mb-4">Maestria</div>
-          <h3 class="font-display text-4xl md:text-5xl mb-4 text-white">Ismael Klann</h3>
-          <p class="text-[#d4af37] font-heading tracking-wider mb-6">O Sushi Man · Mestre Artesão</p>
-          <p class="text-white/80 text-lg leading-relaxed mb-6 italic">
-            "Por trás de cada lâmina existe um mestre. Por trás do mestre, disciplina. Por trás da disciplina, amor."
-          </p>
-          <p class="text-white/60 text-base leading-relaxed mb-8">
-            Há mais de uma década, Ismael Klann dedica cada momento à arte pura do sushi. Cada corte é intencional. Cada detalhe é reverência. Cada prato é um diálogo entre tradição e criatividade — a essência do KA-SÁ SUSHI.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <a href="https://instagram.com/kasasushi_" target="_blank" class="inline-block px-6 py-3 border border-[#d4af37]/40 rounded-full text-[#d4af37] hover:bg-[#d4af37]/10 transition">📷 @kasasushi_</a>
-            <a href="https://instagram.com/ismael_mallmann" target="_blank" class="inline-block px-6 py-3 border border-[#d4af37]/40 rounded-full text-[#d4af37] hover:bg-[#d4af37]/10 transition">📷 @ismael_mallmann</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-[#d4af37]/20 bg-[#0a0a0a] px-6 md:px-20 py-12 md:py-16">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div>
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-8 h-8 rounded-full border border-[#d4af37] bg-[#131210] flex items-center justify-center text-sm">🍣</div>
-            <div class="font-display text-xl gold-text">KA-SÁ SUSHI</div>
-          </div>
-          <p class="text-white/50 text-sm">Cardápio Premium Exclusivo</p>
-        </div>
-        <div>
-          <p class="text-[#d4af37] font-heading text-sm mb-4">HORÁRIOS</p>
-          <p class="text-white/60 text-sm">Terça a Domingo<br>18h às 23h30<br>Delivery & Retirada</p>
-        </div>
-        <div>
-          <p class="text-[#d4af37] font-heading text-sm mb-4">EXPERIÊNCIA</p>
-          <p class="text-white/60 text-sm">Reservas Premium<br>Eventos Privados<br>Consultoria Gastronômica</p>
+        <div class="max-w-xl text-center md:text-left">
+          <p class="italic text-white/80 text-lg leading-relaxed">
+            “Por trás de cada corte existe um mestre — e por trás do mestre, anos de devoção silenciosa à arte do sushi.”
+          </p>
+          <p class="mt-4 text-sm text-white/50">
+            Há mais de cinco anos, Ismael Klann transforma peixe, arroz e tradição nos pratos do Ka-Sasushi.
+          </p>
         </div>
       </div>
-      <div class="border-t border-[#d4af37]/20 pt-8 text-center text-white/40 text-xs">
-        <p>© 2024 KA-SÁ SUSHI. Todos os direitos reservados. | Excelência em Cada Corte</p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+        <a href="https://instagram.com/kasasushi_" target="_blank" class="rounded-full border border-white/15 px-5 py-3 text-xs tracking-[0.15em] uppercase text-white/70 hover:border-[#c8a882]/60 hover:text-[#d9b37b] transition">
+          📷 @kasasushi_
+        </a>
+        <a href="https://instagram.com/ismael_mallmann" target="_blank" class="rounded-full border border-white/15 px-5 py-3 text-xs tracking-[0.15em] uppercase text-white/70 hover:border-[#c8a882]/60 hover:text-[#d9b37b] transition">
+          📷 @ismael_mallmann
+        </a>
       </div>
+
+      <div class="mt-12 flex items-center justify-center md:justify-start gap-3">
+        <div class="w-9 h-9 rounded-full bg-[#a33]/90 flex items-center justify-center text-lg">鮨</div>
+        <div class="font-heading text-2xl tracking-[0.18em]">KA-SÁ<span class="gold">SUSHI</span></div>
+      </div>
+      <p class="mt-5 text-center md:text-left text-[12px] text-white/40">Terça a domingo · 18h às 23h30 · Delivery e retirada</p>
     </div>
   </footer>
 
-  <!-- MOBILE BOTTOM BAR -->
-  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 rounded-full glass-gold">
-    <button id="btn-cat" class="w-10 h-10 rounded-full hover:bg-[#d4af37]/20 transition" title="Menu">☰</button>
-    <button id="btn-user" class="w-10 h-10 rounded-full hover:bg-[#d4af37]/20 transition" title="Chef">👤</button>
-    <button id="btn-cart" class="relative w-10 h-10 rounded-full bg-[#d4af37]/15 hover:bg-[#d4af37]/25 transition text-[#d4af37]" title="Carrinho">
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-2 rounded-full glass">
+    <button id="btn-cat" class="w-10 h-10 rounded-full bg-white/5 text-white/70 hover:bg-white/10 transition">☰</button>
+    <button id="btn-user" class="w-10 h-10 rounded-full bg-white/5 text-white/70 hover:bg-white/10 transition">👤</button>
+    <button id="btn-cart" class="relative w-10 h-10 rounded-full bg-[#c8a882]/15 text-[#d9b37b] hover:bg-[#c8a882]/25 transition">
       🛒
-      <span id="badge" class="absolute -top-1 -right-1 bg-red-500 text-[9px] text-white min-w-[20px] h-[20px] rounded-full flex items-center justify-center font-bold shadow-lg">0</span>
+      <span id="badge" class="absolute -top-1 -right-1 bg-red-600 text-[10px] text-white min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 font-semibold">0</span>
     </button>
   </div>
 
-  <!-- CART PANEL -->
-  <aside id="cart-panel" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-sm glass-gold rounded-2xl p-6 hidden max-h-[75vh] overflow-y-auto shadow-2xl">
-    <div class="flex items-center justify-between mb-6 pb-4 border-b border-[#d4af37]/20">
-      <h3 class="font-display text-2xl text-white">Seu Pedido</h3>
-      <button id="close-cart" class="text-white/60 text-3xl leading-none hover:text-[#d4af37] transition">×</button>
+  <aside id="cart-panel" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-md glass rounded-2xl p-4 hidden">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-heading text-xl">Seu pedido</h3>
+      <button id="close-cart" class="text-white/60 text-2xl leading-none">×</button>
     </div>
-    <div id="cart-items" class="space-y-3 mb-6"></div>
-    <div class="border-t border-[#d4af37]/20 pt-6">
-      <div class="flex items-center justify-between mb-6">
+    <div id="cart-items" class="space-y-3 max-h-[260px] overflow-y-auto pr-1"></div>
+    <div class="mt-4 border-t border-white/10 pt-4">
+      <div class="flex items-center justify-between">
         <span class="text-white/60">Total</span>
-        <strong id="cart-total" class="text-2xl gold-text font-display">R$ 0,00</strong>
+        <strong id="cart-total" class="text-[#d9b37b] text-lg">R$ 0,00</strong>
       </div>
-      <button class="w-full rounded-full bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-[#0a0a0a] font-heading py-3 text-sm tracking-wider uppercase hover:shadow-lg hover:shadow-[#d4af37]/30 transition">
-        Finalizar Pedido
+      <button class="mt-4 w-full rounded-full bg-[#c8a882] text-[#120d0a] font-semibold py-3">
+        Finalizar pedido
       </button>
     </div>
   </aside>
@@ -377,34 +193,34 @@
   <script>
     const menu = {
       entradas: [
-        { id: "entry-1", name: "Gyoza de Frango", desc: "Massa crocante com recheio delicado e molho shoyu tradicional.", price: 32, image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=800&q=90" },
-        { id: "entry-2", name: "Edamame Premium", desc: "Vagem fresca colhida em ponto perfeito, finalizada com flor de sal.", price: 26, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=90" },
-        { id: "entry-3", name: "Sunomono Refinado", desc: "Pepino e cenoura em vinagre de arroz fino com essência de gengibre.", price: 28, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=90" },
-        { id: "entry-4", name: "Ceviche de Salmão Premium", desc: "Salmão selvagem em cítrico artesanal, shoyu e óleo de gergelim tostado.", price: 42, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=90" }
+        { id: "entry-1", name: "Gyoza de Frango", desc: "Massa crocante com recheio suculento e molho shoyu.", price: 28, image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80" },
+        { id: "entry-2", name: "Edamame Salgado", desc: "Vagem fresca, levada ao sal de flor de sal.", price: 22, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" },
+        { id: "entry-3", name: "Sunomono", desc: "Pepino e cenoura em vinagre de arroz com leve toque de gengibre.", price: 24, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" },
+        { id: "entry-4", name: "Ceviche de Salmão", desc: "Fatias finas em cítrico, shoyu e óleo de gergelim.", price: 36, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80" }
       ],
       uramaki: [
-        { id: "uramaki-1", name: "California Gold", desc: "Salmão premium, abacate orgânico e pepino em arroz selecionado.", price: 38, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=90" },
-        { id: "uramaki-2", name: "Kani Crunch Nobre", desc: "Camarão tempurá perfeito, kani selecionado e molho de alho poró refinado.", price: 36, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=90" },
-        { id: "uramaki-3", name: "Hot Tuna Supremo", desc: "Atum premium, goiaba fresca, pimenta biquinho e maionese japonesa artesanal.", price: 44, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=90" },
-        { id: "uramaki-4", name: "Vegetal Zen", desc: "Abobrinha grelhada, cenoura doce, alga nori premium e cream cheese.", price: 32, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=90" }
+        { id: "uramaki-1", name: "California Gold", desc: "Salmão, abacate e pepino em arroz por fora.", price: 34, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=900&q=80" },
+        { id: "uramaki-2", name: "Kani Crunch", desc: "Camarão tempurá, kani e molho de alho poró.", price: 32, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80" },
+        { id: "uramaki-3", name: "Hot Tuna", desc: "Atum, goiaba, pimenta e maionese japonesa.", price: 38, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80" },
+        { id: "uramaki-4", name: "Vegetal Zen", desc: "Abobrinha, cenoura, alga e cream cheese leve.", price: 29, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" }
       ],
       hossomaki: [
-        { id: "hossomaki-1", name: "Salmão Nori Premium", desc: "Rolo delicado com salmão selvagem fresco e arroz temperado com essência de yuzu.", price: 31, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=90" },
-        { id: "hossomaki-2", name: "Pepino Fresco Jardim", desc: "Clássico refrescante com pepino do dia, leve e extremamente elegante.", price: 25, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=90" },
-        { id: "hossomaki-3", name: "Atum Kuro Nobre", desc: "Atum em fatias finas com leve toque de shiso fresco e arroz premium.", price: 35, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=90" },
-        { id: "hossomaki-4", name: "Camarão Dashi Artesano", desc: "Camarão selecionado e dashi em perfil sutil, sofisticado e envolvente.", price: 34, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=90" }
+        { id: "hossomaki-1", name: "Salmão Nori", desc: "Rolo delicado com salmão e arroz bem temperado.", price: 27, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80" },
+        { id: "hossomaki-2", name: "Pepino Fresco", desc: "Clássico, leve e extremamente refrescante.", price: 22, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" },
+        { id: "hossomaki-3", name: "Atum Kuro", desc: "Atum em fatias finas, com leve toque de shiso.", price: 31, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80" },
+        { id: "hossomaki-4", name: "Camarão Dashi", desc: "Camarão artesanal e dashi em perfil sutil e sofisticado.", price: 30, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=900&q=80" }
       ],
       temaki: [
-        { id: "temaki-1", name: "Temaki Salmão Premium", desc: "Cone crocante com salmão selvagem fresco, cebolinha refinada e gergelim tostado.", price: 38, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=90" },
-        { id: "temaki-2", name: "Temaki Atum Perfeito", desc: "Atum premium em cone artesanal com molho ponzu e sementes de gergelim.", price: 39, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=90" },
-        { id: "temaki-3", name: "Temaki Camarão Especial", desc: "Camarão recheado com manga fresca, cebolinha e toque de limão siciliano.", price: 40, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=90" },
-        { id: "temaki-4", name: "Temaki Veggie Premium", desc: "Abacate orgânico, pepino fresco, manga doce e alga nori de primeira qualidade.", price: 32, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=90" }
+        { id: "temaki-1", name: "Temaki Salmão", desc: "Cone crocante com salmão fresco e cebolinha.", price: 33, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80" },
+        { id: "temaki-2", name: "Temaki Atum", desc: "Atum, molho ponzu e semente de gergelim tostado.", price: 34, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80" },
+        { id: "temaki-3", name: "Temaki Camarão", desc: "Camarão recheado com manga e cebolinha.", price: 35, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=900&q=80" },
+        { id: "temaki-4", name: "Temaki Veggie", desc: "Abacate, pepino, manga e alga nori.", price: 28, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" }
       ],
       sobremesa: [
-        { id: "dessert-1", name: "Dorayaki Premium", desc: "Panqueca japonesa tradicional com doce de feijão adzuki artesanal.", price: 22, image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=90" },
-        { id: "dessert-2", name: "Mochi Morango Delicado", desc: "Massa de arroz glutinoso com recheio de morango fresco e leite condensado.", price: 20, image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=90" },
-        { id: "dessert-3", name: "Yuzu Cheesecake", desc: "Cheesecake cremoso com citrinos orientais e base de biscoito amanteigado.", price: 26, image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=90" },
-        { id: "dessert-4", name: "Pudim Matcha Nobre", desc: "Textura cremosa com matcha premium, leve amargor e doçura equilibrada.", price: 24, image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=90" }
+        { id: "dessert-1", name: "Dorayaki", desc: "Panqueca japonesa recheada com doce de feijão adzuki.", price: 18, image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80" },
+        { id: "dessert-2", name: "Mochi Sabor Morango", desc: "Massa de arroz com recheio de morango e leite condensado.", price: 17, image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" },
+        { id: "dessert-3", name: "Yuzu Cheesecake", desc: "Cheesecake com citrinos orientais e base de biscoito.", price: 22, image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80" },
+        { id: "dessert-4", name: "Pudim Matcha", desc: "Textura cremosa com matcha e leve amargor.", price: 19, image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80" }
       ]
     };
 
@@ -425,21 +241,18 @@
     function renderCategory(key) {
       const container = document.getElementById(`list-${key}`);
       container.innerHTML = menu[key].map(item => `
-        <article class="menu-card rounded-2xl overflow-hidden">
-          <div class="relative overflow-hidden h-48 md:h-56">
-            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          </div>
-          <div class="p-5 md:p-6">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <div class="flex-1">
-                <h3 class="font-heading text-xl md:text-2xl text-white leading-tight">${item.name}</h3>
+        <article class="menu-card rounded-[28px] overflow-hidden">
+          <img src="${item.image}" alt="${item.name}" class="h-52 w-full object-cover" />
+          <div class="p-5">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-heading text-[24px] leading-none">${item.name}</h3>
+                <p class="mt-3 text-sm text-white/60 leading-relaxed">${item.desc}</p>
               </div>
-              <div class="price-badge">${formatPrice(item.price)}</div>
+              <div class="text-[#d9b37b] font-semibold whitespace-nowrap">${formatPrice(item.price)}</div>
             </div>
-            <p class="text-white/60 text-sm leading-relaxed mb-4">${item.desc}</p>
-            <button data-product-id="${item.id}" class="add-to-cart btn-add w-full rounded-lg py-2.5 text-sm uppercase tracking-wider font-semibold">
-              + Adicionar
+            <button data-product-id="${item.id}" class="add-to-cart mt-5 w-full rounded-full border border-[#c8a882]/40 bg-[#c8a882]/10 text-[#f5dfc1] py-2.5 text-sm font-medium hover:bg-[#c8a882]/20 transition">
+              Adicionar
             </button>
           </div>
         </article>
@@ -457,21 +270,25 @@
       badge.textContent = count;
 
       if (!cart.length) {
-        cartItems.innerHTML = `<div class="text-center py-8 text-white/50"><p class="text-sm">Seu carrinho está vazio</p></div>`;
+        cartItems.innerHTML = `
+          <div class="text-center py-8 text-white/50">
+            <p class="text-sm">Seu carrinho está vazio.</p>
+          </div>
+        `;
         cartTotal.textContent = formatPrice(0);
         return;
       }
 
       cartItems.innerHTML = cart.map(item => `
-        <div class="flex items-center justify-between gap-3 rounded-lg bg-white/5 p-3 border border-[#d4af37]/10">
+        <div class="flex items-center justify-between gap-3 rounded-xl bg-white/[0.03] p-3">
           <div class="min-w-0 flex-1">
-            <p class="font-medium text-white text-sm truncate">${item.name}</p>
-            <p class="text-xs text-white/50">${formatPrice(item.price)}</p>
+            <p class="font-medium truncate">${item.name}</p>
+            <p class="text-xs text-white/55">${formatPrice(item.price)} cada</p>
           </div>
           <div class="flex items-center gap-2">
-            <button data-action="decrease" data-product-id="${item.id}" class="w-7 h-7 rounded-full bg-white/5 hover:bg-[#d4af37]/20 text-white text-sm transition">−</button>
-            <span class="text-sm w-6 text-center">${item.quantity}</span>
-            <button data-action="increase" data-product-id="${item.id}" class="w-7 h-7 rounded-full bg-[#d4af37]/15 text-[#d4af37] text-sm hover:bg-[#d4af37]/30 transition">+</button>
+            <button data-action="decrease" data-product-id="${item.id}" class="w-7 h-7 rounded-full bg-white/7 text-white/80">−</button>
+            <span class="text-sm min-w-[20px] text-center">${item.quantity}</span>
+            <button data-action="increase" data-product-id="${item.id}" class="w-7 h-7 rounded-full bg-[#c8a882]/15 text-[#d9b37b]">+</button>
           </div>
         </div>
       `).join("");
@@ -527,12 +344,12 @@
     document.getElementById("close-cart").addEventListener("click", closeCart);
 
     document.getElementById("btn-cat").addEventListener("click", () => {
-      document.getElementById("entradas").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("entradas").scrollIntoView({ behavior: "smooth", block: "start" });
       closeCart();
     });
 
     document.getElementById("btn-user").addEventListener("click", () => {
-      document.getElementById("sobremesa").scrollIntoView({ behavior: "smooth" });
+      document.querySelector("footer").scrollIntoView({ behavior: "smooth", block: "start" });
       closeCart();
     });
 
