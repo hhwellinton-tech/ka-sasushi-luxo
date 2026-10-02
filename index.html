@@ -4,77 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KA-SÁ SUSHI — Cardápio Premium</title>
+  <meta name="description" content="Cardápio premium do KA-SÁ SUSHI com entradas, uramaki, hossomaki, temaki e sobremesas." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #080808;
-      --panel: rgba(255,255,255,0.02);
+      --bg: #090909;
+      --panel: rgba(255,255,255,0.03);
       --gold: #c8a882;
-      --gold-soft: #f0d9b3;
+      --gold-soft: #f4dfb7;
       --text: #f4efe8;
-      --muted: rgba(255,255,255,0.65);
+      --muted: rgba(255,255,255,0.68);
       --line: rgba(255,255,255,0.08);
+      --deep: rgba(19, 17, 14, 0.9);
     }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top, rgba(200,168,130,0.08), transparent 30%),
+        var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
     }
     .font-heading { font-family: 'Cinzel', serif; }
     .gold { color: var(--gold); }
-    .gold-bg { background: var(--gold); }
+    .gold-bg { background: linear-gradient(135deg, #d7b88a 0%, #c59f6f 100%); }
     .glass {
-      background: rgba(15,15,15,0.72);
+      background: rgba(15,15,15,0.78);
       border: 1px solid var(--line);
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
     .menu-card {
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.025);
       border: 1px solid var(--line);
       transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
     }
     .menu-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(200,168,130,0.55);
-      box-shadow: 0 18px 30px rgba(0,0,0,0.18);
+      transform: translateY(-5px);
+      border-color: rgba(200,168,130,0.6);
+      box-shadow: 0 24px 40px rgba(0,0,0,0.22);
     }
     .hero-pattern {
       background-image:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.7)),
-        url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1200&q=80');
+        linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.72)),
+        url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
     }
     .pill {
-      letter-spacing: .28em;
+      letter-spacing: .22em;
       text-transform: uppercase;
       font-size: 10px;
       color: rgba(255,255,255,0.6);
     }
+    .soft-border {
+      border: 1px solid rgba(200,168,130,0.2);
+    }
     @media (max-width: 768px) {
       .hero-pattern {
         background-image:
-          linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.75)),
-          url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80');
+          linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.8)),
+          url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80');
       }
     }
   </style>
 </head>
 <body class="pb-28">
 
-  <header class="hero-pattern relative h-[92vh] overflow-hidden md:h-screen">
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent"></div>
+  <header class="hero-pattern relative h-[92vh] overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent"></div>
 
-    <nav class="absolute top-0 left-0 right-0 z-20 px-4 md:px-16 py-4 md:py-6 flex items-center justify-between">
+    <nav class="absolute top-0 left-0 right-0 z-20 px-4 md:px-16 py-5 md:py-6 flex items-center justify-between">
       <div class="flex items-center gap-2 md:gap-3">
-        <div class="w-7 h-7 md:w-8 md:h-8 rounded-full border border-white/15 bg-black/20 flex items-center justify-center text-xs text-[#d9b37b]">🍣</div>
+        <div class="w-8 h-8 rounded-full border border-white/15 bg-black/20 flex items-center justify-center text-sm text-[#d9b37b]">🍣</div>
         <div class="font-heading text-lg md:text-xl tracking-[0.18em] md:tracking-[0.22em]">KA-SÁ<span class="gold">SUSHI</span></div>
       </div>
-      <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[0.26em] text-white/60">
+      <div class="hidden md:flex items-center gap-8 text-[10px] uppercase tracking-[0.24em] text-white/60">
         <a href="#entradas" class="hover:text-[#d9b37b] transition">Entradas</a>
         <a href="#uramaki" class="hover:text-[#d9b37b] transition">Uramaki</a>
         <a href="#hossomaki" class="hover:text-[#d9b37b] transition">Hossomaki</a>
@@ -84,12 +92,12 @@
     </nav>
 
     <div class="relative z-10 h-full flex items-end px-4 md:px-20 pb-12 md:pb-20">
-      <div class="max-w-2xl">
-        <div class="pill mb-3 md:mb-4">Edomae · Tradição Oriental</div>
-        <h1 class="font-heading text-4xl md:text-[88px] leading-tight md:leading-none">
+      <div class="max-w-xl">
+        <div class="pill mb-3 md:mb-4">Edomae · Tradição oriental</div>
+        <h1 class="font-heading text-5xl md:text-[88px] leading-none">
           KA-SÁ<span class="gold">SUSHI</span>
         </h1>
-        <p class="mt-3 md:mt-5 italic text-white/70 text-sm md:text-lg">"Carregue a tradição em seu bolso."</p>
+        <p class="mt-4 italic text-white/70 text-base md:text-lg">“Carregue a tradição em seu bolso.”</p>
       </div>
     </div>
   </header>
@@ -100,84 +108,82 @@
         <span class="text-[#8a1d1d]/70 text-xl md:text-2xl">前</span>
         <h2 class="font-heading text-2xl md:text-[30px] tracking-[0.08em]">Entradas</h2>
       </div>
-      <div id="list-entradas" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="list-entradas" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <section id="uramaki" class="pt-12 md:pt-18">
+    <section id="uramaki" class="pt-14 md:pt-18">
       <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
         <span class="text-[#8a1d1d]/70 text-xl md:text-2xl">巻</span>
         <h2 class="font-heading text-2xl md:text-[30px] tracking-[0.08em]">Uramaki</h2>
       </div>
-      <div id="list-uramaki" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="list-uramaki" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <section id="hossomaki" class="pt-12 md:pt-18">
+    <section id="hossomaki" class="pt-14 md:pt-18">
       <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
         <span class="text-[#8a1d1d]/70 text-xl md:text-2xl">細</span>
         <h2 class="font-heading text-2xl md:text-[30px] tracking-[0.08em]">Hossomaki</h2>
       </div>
-      <div id="list-hossomaki" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="list-hossomaki" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <section id="temaki" class="pt-12 md:pt-18">
+    <section id="temaki" class="pt-14 md:pt-18">
       <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
         <span class="text-[#8a1d1d]/70 text-xl md:text-2xl">手</span>
         <h2 class="font-heading text-2xl md:text-[30px] tracking-[0.08em]">Temaki</h2>
       </div>
-      <div id="list-temaki" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="list-temaki" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <section id="sobremesa" class="pt-12 md:pt-18">
+    <section id="sobremesa" class="pt-14 md:pt-18">
       <div class="flex items-center gap-2 md:gap-3 mb-6 md:mb-8">
         <span class="text-[#8a1d1d]/70 text-xl md:text-2xl">甘</span>
         <h2 class="font-heading text-2xl md:text-[30px] tracking-[0.08em]">Sobremesas</h2>
       </div>
-      <div id="list-sobremesa" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="list-sobremesa" class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
   </main>
 
-  <footer class="mt-12 md:mt-16 border-t border-white/10 bg-[#0b0b0b] px-4 md:px-20 py-12 md:py-16">
+  <footer class="mt-10 md:mt-16 border-t border-white/10 bg-[#0b0b0b] px-4 md:px-20 py-12 md:py-16">
     <div class="max-w-5xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="text-center md:text-left">
           <div class="w-14 h-14 mx-auto md:mx-0 rounded-full border border-[#c8a882]/40 bg-[#171a2a] flex items-center justify-center text-[#d8b280] font-heading text-2xl">匠</div>
-          <h3 class="mt-4 md:mt-5 font-heading text-3xl md:text-4xl">Ismael Klann</h3>
+          <h3 class="mt-5 font-heading text-3xl md:text-4xl">Ismael Klann</h3>
           <p class="mt-2 pill !tracking-[0.25em] text-[#c8a882]">O Sushi Man</p>
         </div>
 
         <div class="max-w-xl text-center md:text-left text-sm md:text-base">
           <p class="italic text-white/80 leading-relaxed">
-            "Por trás de cada corte existe um mestre — e por trás do mestre, anos de devoção silenciosa à arte do sushi."
+            “Por trás de cada corte existe um mestre — e por trás do mestre, anos de devoção silenciosa à arte do sushi.”
           </p>
           <p class="mt-3 md:mt-4 text-xs md:text-sm text-white/50">
-            Há mais de cinco anos, Ismael Klann transforma peixe, arroz e tradição nos pratos do Ka-Sá Sushi.
+            Há mais de cinco anos, Ismael Klann transforma peixe, arroz e tradição nos pratos do KA-SÁ SUSHI.
           </p>
         </div>
       </div>
 
-      <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-2 md:gap-3 justify-center md:justify-start">
-        <a href="https://instagram.com/kasasushi_" target="_blank" class="rounded-full border border-white/15 px-4 md:px-5 py-2 md:py-3 text-xs tracking-[0.15em] uppercase text-white/70 hover:border-[#c8a882]/60 hover:text-[#d9b37b] transition">
+      <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+        <a href="https://instagram.com/kasasushi_" target="_blank" class="rounded-full border border-white/15 px-5 py-3 text-xs tracking-[0.15em] uppercase text-white/70 hover:border-[#c8a882]/60 hover:text-[#d9b37b] transition">
           📷 @kasasushi_
         </a>
-        <a href="https://instagram.com/ismael_mallmann" target="_blank" class="rounded-full border border-white/15 px-4 md:px-5 py-2 md:py-3 text-xs tracking-[0.15em] uppercase text-white/70 hover:border-[#c8a882]/60 hover:text-[#d9b37b] transition">
+        <a href="https://instagram.com/ismael_mallmann" target="_blank" class="rounded-full border border-white/15 px-5 py-3 text-xs tracking-[0.15em] uppercase text-white/70 hover:border-[#c8a882]/60 hover:text-[#d9b37b] transition">
           📷 @ismael_mallmann
         </a>
       </div>
 
-      <div class="mt-8 md:mt-12 flex items-center justify-center md:justify-start gap-3">
+      <div class="mt-10 md:mt-12 flex items-center justify-center md:justify-start gap-3">
         <div class="w-9 h-9 rounded-full bg-[#a33]/90 flex items-center justify-center text-lg">🍣</div>
         <div class="font-heading text-xl md:text-2xl tracking-[0.18em]">KA-SÁ<span class="gold">SUSHI</span></div>
       </div>
-      <p class="mt-4 md:mt-5 text-center md:text-left text-[11px] md:text-[12px] text-white/40">
-        Terça a domingo · 18h às 23h30 · Delivery e retirada
-      </p>
+      <p class="mt-4 md:mt-5 text-center md:text-left text-[11px] md:text-[12px] text-white/40">Terça a domingo · 18h às 23h30 · Delivery e retirada</p>
     </div>
   </footer>
 
   <div class="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-2 rounded-full glass">
-    <button id="btn-cat" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 text-white/70 hover:bg-white/10 transition text-lg">☰</button>
-    <button id="btn-user" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 text-white/70 hover:bg-white/10 transition text-lg">👤</button>
-    <button id="btn-cart" class="relative w-9 h-9 md:w-10 md:h-10 rounded-full bg-[#c8a882]/15 text-[#d9b37b] hover:bg-[#c8a882]/25 transition text-lg">
+    <button id="btn-cat" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 text-white/70 hover:bg-white/10 transition">☰</button>
+    <button id="btn-user" class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 text-white/70 hover:bg-white/10 transition">👤</button>
+    <button id="btn-cart" class="relative w-9 h-9 md:w-10 md:h-10 rounded-full bg-[#c8a882]/15 text-[#d9b37b] hover:bg-[#c8a882]/25 transition">
       🛒
       <span id="badge" class="absolute -top-1 -right-1 bg-red-600 text-[9px] md:text-[10px] text-white min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 font-semibold">0</span>
     </button>
@@ -203,34 +209,34 @@
   <script>
     const menu = {
       entradas: [
-        { id: "entry-1", name: "Gyoza de Frango", desc: "Massa crocante com recheio suculento e molho shoyu.", price: 28, image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=85" },
-        { id: "entry-2", name: "Edamame Salgado", desc: "Vagem fresca, levada ao sal de flor de sal.", price: 22, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=600&q=85" },
-        { id: "entry-3", name: "Sunomono", desc: "Pepino e cenoura em vinagre de arroz com leve toque de gengibre.", price: 24, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=85" },
-        { id: "entry-4", name: "Ceviche de Salmão", desc: "Fatias finas em cítrico, shoyu e óleo de gergelim.", price: 36, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=85" }
+        { id: "entry-1", name: "Gyoza de Frango", desc: "Massa crocante com recheio suculento e molho shoyu.", price: 28, image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=800&q=80" },
+        { id: "entry-2", name: "Edamame Salgado", desc: "Vagem fresca, levada ao sal de flor de sal.", price: 22, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80" },
+        { id: "entry-3", name: "Sunomono", desc: "Pepino e cenoura em vinagre de arroz com leve toque de gengibre.", price: 24, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" },
+        { id: "entry-4", name: "Ceviche de Salmão", desc: "Fatias finas em cítrico, shoyu e óleo de gergelim.", price: 36, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" }
       ],
       uramaki: [
-        { id: "uramaki-1", name: "California Gold", desc: "Salmão, abacate e pepino em arroz por fora.", price: 34, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=85" },
-        { id: "uramaki-2", name: "Kani Crunch", desc: "Camarão tempurá, kani e molho de alho poró.", price: 32, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=85" },
-        { id: "uramaki-3", name: "Hot Tuna", desc: "Atum, goiaba, pimenta e maionese japonesa.", price: 38, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=85" },
-        { id: "uramaki-4", name: "Vegetal Zen", desc: "Abobrinha, cenoura, alga e cream cheese leve.", price: 29, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=600&q=85" }
+        { id: "uramaki-1", name: "California Gold", desc: "Salmão, abacate e pepino em arroz por fora.", price: 34, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=80" },
+        { id: "uramaki-2", name: "Kani Crunch", desc: "Camarão tempurá, kani e molho de alho poró.", price: 32, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" },
+        { id: "uramaki-3", name: "Hot Tuna", desc: "Atum, goiaba, pimenta e maionese japonesa.", price: 38, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80" },
+        { id: "uramaki-4", name: "Vegetal Zen", desc: "Abobrinha, cenoura, alga e cream cheese leve.", price: 29, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80" }
       ],
       hossomaki: [
-        { id: "hossomaki-1", name: "Salmão Nori", desc: "Rolo delicado com salmão e arroz bem temperado.", price: 27, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=85" },
-        { id: "hossomaki-2", name: "Pepino Fresco", desc: "Clássico, leve e extremamente refrescante.", price: 22, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=85" },
-        { id: "hossomaki-3", name: "Atum Kuro", desc: "Atum em fatias finas, com leve toque de shiso.", price: 31, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=85" },
-        { id: "hossomaki-4", name: "Camarão Dashi", desc: "Camarão artesanal e dashi em perfil sutil e sofisticado.", price: 30, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=85" }
+        { id: "hossomaki-1", name: "Salmão Nori", desc: "Rolo delicado com salmão e arroz bem temperado.", price: 27, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80" },
+        { id: "hossomaki-2", name: "Pepino Fresco", desc: "Clássico, leve e extremamente refrescante.", price: 22, image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" },
+        { id: "hossomaki-3", name: "Atum Kuro", desc: "Atum em fatias finas, com leve toque de shiso.", price: 31, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" },
+        { id: "hossomaki-4", name: "Camarão Dashi", desc: "Camarão artesanal e dashi em perfil sutil e sofisticado.", price: 30, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=80" }
       ],
       temaki: [
-        { id: "temaki-1", name: "Temaki Salmão", desc: "Cone crocante com salmão fresco e cebolinha.", price: 33, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=600&q=85" },
-        { id: "temaki-2", name: "Temaki Atum", desc: "Atum, molho ponzu e semente de gergelim tostado.", price: 34, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=85" },
-        { id: "temaki-3", name: "Temaki Camarão", desc: "Camarão recheado com manga e cebolinha.", price: 35, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=600&q=85" },
-        { id: "temaki-4", name: "Temaki Veggie", desc: "Abacate, pepino, manga e alga nori.", price: 28, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=600&q=85" }
+        { id: "temaki-1", name: "Temaki Salmão", desc: "Cone crocante com salmão fresco e cebolinha.", price: 33, image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80" },
+        { id: "temaki-2", name: "Temaki Atum", desc: "Atum, molho ponzu e semente de gergelim tostado.", price: 34, image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" },
+        { id: "temaki-3", name: "Temaki Camarão", desc: "Camarão recheado com manga e cebolinha.", price: 35, image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=80" },
+        { id: "temaki-4", name: "Temaki Veggie", desc: "Abacate, pepino, manga e alga nori.", price: 28, image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80" }
       ],
       sobremesa: [
-        { id: "dessert-1", name: "Dorayaki", desc: "Panqueca japonesa recheada com doce de feijão adzuki.", price: 18, image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=85" },
-        { id: "dessert-2", name: "Mochi Morango", desc: "Massa de arroz com recheio de morango e leite condensado.", price: 17, image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=85" },
-        { id: "dessert-3", name: "Yuzu Cheesecake", desc: "Cheesecake com citrinos orientais e base de biscoito.", price: 22, image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=85" },
-        { id: "dessert-4", name: "Pudim Matcha", desc: "Textura cremosa com matcha e leve amargor.", price: 19, image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=85" }
+        { id: "dessert-1", name: "Dorayaki", desc: "Panqueca japonesa recheada com doce de feijão adzuki.", price: 18, image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80" },
+        { id: "dessert-2", name: "Mochi Morango", desc: "Massa de arroz com recheio de morango e leite condensado.", price: 17, image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" },
+        { id: "dessert-3", name: "Yuzu Cheesecake", desc: "Cheesecake com citrinos orientais e base de biscoito.", price: 22, image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80" },
+        { id: "dessert-4", name: "Pudim Matcha", desc: "Textura cremosa com matcha e leve amargor.", price: 19, image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80" }
       ]
     };
 
@@ -251,7 +257,7 @@
     function renderCategory(key) {
       const container = document.getElementById(`list-${key}`);
       container.innerHTML = menu[key].map(item => `
-        <article class="menu-card rounded-[20px] md:rounded-[28px] overflow-hidden">
+        <article class="menu-card rounded-[22px] md:rounded-[28px] overflow-hidden">
           <img src="${item.image}" alt="${item.name}" class="h-40 md:h-52 w-full object-cover" loading="lazy" />
           <div class="p-3 md:p-5">
             <div class="flex items-start justify-between gap-3">
