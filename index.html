@@ -1,125 +1,152 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KA-SÁSUSHI - Completo</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-<style>
-.font-heading{font-family:'Cinzel',serif}.font-body{font-family:'Inter',sans-serif}
-*{scroll-behavior:smooth}
-.dock{backdrop-filter:blur(18px);background:rgba(21,21,21,.92);border:1px solid rgba(255,255,255,.08)}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KA-SÁSUSHI — Menu Luxury 2.0</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #080808; --gold: #c8a882; --line: rgba(255,255,255,0.08); }
+    body { background: #080808; color: #f4efe8; font-family: 'Inter', sans-serif; }
+   .font-heading { font-family: 'Cinzel', serif; }
+   .gold { color: var(--gold); }
+   .glass { background: rgba(15,15,15,0.92); border: 1px solid var(--line); backdrop-filter: blur(20px); }
+   .menu-card { background: rgba(255,255,255,0.03); border: 1px solid var(--line); transition: all.25s ease; }
+   .menu-card:hover { transform: translateY(-6px); border-color: rgba(200,168,130,0.6); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+   .hero-pattern { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; }
+  </style>
 </head>
-<body class="bg-[#080808] text-[#f5f2eb] font-body pb-[120px]">
+<body>
 
-<div class="relative h-[88vh] overflow-hidden bg-black">
-<img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1200" class="absolute inset-0 w-full h-full object-cover opacity-55">
-<div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-<div class="absolute top-6 left-6 text-[9px] tracking-[0.35em] uppercase text-white/40">EDOMAE · TRADIÇÃO ORIENTAL</div>
-<div class="relative z-10 h-full flex flex-col justify-center px-6 md:px-20">
-<h1 class="font-heading text-[42px] md:text-[64px] leading-none">KA-SÁ<span class="text-[#c8a882]">SUSHI</span></h1>
-<p class="mt-6 text-[13px] italic text-white/70 max-w-[320px]">"Carregue a tradição em seu bolso."</p>
-</div>
-</div>
+<header class="hero-pattern relative h-screen flex items-center">
+  <nav class="absolute top-0 left-0 right-0 z-20 px-6 md:px-16 py-6 flex justify-between">
+    <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full border border-white/20 bg-black/40 flex items-center justify-center text-[#d9b37b] font-bold">鮨</div><div class="font-heading text-lg tracking-widest">KA-SÁ<span class="gold">SUSHI</span></div></div>
+    <div class="text-[10px] tracking-widest text-white/50">VIDEIRA • SC • DELIVERY</div>
+  </nav>
+  <div class="relative z-10 px-6 md:px-20 max-w-2xl">
+    <p class="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-6">Edomae · Tradição Oriental Autêntica</p>
+    <h1 class="font-heading text-6xl md:text-8xl leading-none">KA-SÁ<span class="gold">SUSHI</span></h1>
+    <p class="mt-8 italic text-white/60 text-lg">"Carregue a tradição em seu bolso."</p>
+    <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})" class="mt-10 px-10 py-4 border border-[#c8a882] text-[#c8a882] rounded-full text-sm tracking-widest uppercase hover:bg-[#c8a882] hover:text-black transition">Ver cardápio</button>
+  </div>
+</header>
 
-<div id="entradas" class="px-6 md:px-20 pt-16"><div class="flex items-center gap-3 mb-8"><span class="text-red-900/60 text-2xl">前</span><h2 class="font-heading text-[26px]">ENTRADAS</h2></div><div id="list-entradas"></div></div>
-<div id="uramaki" class="px-6 md:px-20 pt-16"><div class="flex items-center gap-3 mb-8"><span class="text-red-900/60 text-2xl">巻</span><h2 class="font-heading text-[26px]">URAMAKI</h2></div><div id="list-uramaki"></div></div>
-<div id="hossomaki" class="px-6 md:px-20 pt-16"><div class="flex items-center gap-3 mb-8"><span class="text-red-900/60 text-2xl">細</span><h2 class="font-heading text-[26px]">HOSSOMAKI</h2></div><div id="list-hossomaki"></div></div>
-<div id="temaki" class="px-6 md:px-20 pt-16"><div class="flex items-center gap-3 mb-8"><span class="text-red-900/60 text-2xl">手</span><h2 class="font-heading text-[26px]">TEMAKI</h2></div><div id="list-temaki"></div></div>
-<div id="sobremesa" class="px-6 md:px-20 pt-16"><div class="flex items-center gap-3 mb-8"><span class="text-red-900/60 text-2xl">甘</span><h2 class="font-heading text-[26px]">SOBREMESAS</h2></div><div id="list-sobremesa"></div></div>
+<main id="menu" class="px-6 md:px-20 py-20 max-w-[1400px] mx-auto">
+  <section class="mb-20"><div class="flex items-center gap-3 mb-10"><span class="text-[#8a1d1d]/50 text-3xl">前</span><h2 class="font-heading text-4xl">Entradas</h2></div><div id="entradas" class="grid gap-6 md:grid-cols-3"></div></section>
+  <section class="mb-20"><div class="flex items-center gap-3 mb-10"><span class="text-[#8a1d1d]/50 text-3xl">巻</span><h2 class="font-heading text-4xl">Uramaki</h2></div><div id="uramaki" class="grid gap-6 md:grid-cols-3"></div></section>
+  <section class="mb-20"><div class="flex items-center gap-3 mb-10"><span class="text-[#8a1d1d]/50 text-3xl">細</span><h2 class="font-heading text-4xl">Hossomaki</h2></div><div id="hossomaki" class="grid gap-6 md:grid-cols-3"></div></section>
+  <section class="mb-20"><div class="flex items-center gap-3 mb-10"><span class="text-[#8a1d1d]/50 text-3xl">手</span><h2 class="font-heading text-4xl">Temaki</h2></div><div id="temaki" class="grid gap-6 md:grid-cols-3"></div></section>
+  <section class="mb-20"><div class="flex items-center gap-3 mb-10"><span class="text-[#8a1d1d]/50 text-3xl">甘</span><h2 class="font-heading text-4xl">Sobremesas</h2></div><div id="sobremesa" class="grid gap-6 md:grid-cols-3"></div></section>
+</main>
 
-<footer class="mt-20 bg-[#080808] border-t border-white/[0.06] pt-16 pb-10 px-6 md:px-20 text-center">
-<div class="max-w-[520px] mx-auto">
-<div class="w-12 h-12 mx-auto rounded-full bg-[#171a2a] border border-white/10 flex items-center justify-center"><span class="text-[#7a8ab0] font-heading text-lg">匠</span></div>
-<h2 class="mt-6 font-heading text-[28px]">Ismael Klann</h2>
-<p class="mt-1 text-[10px] tracking-[0.35em] uppercase text-[#c8a882]">O SUSHI MAN</p>
-<p class="mt-8 text-[16px] leading-relaxed text-white/80 italic">"Por trás de cada corte existe um mestre — e por trás do mestre, anos de devoção silenciosa à arte do sushi."</p>
-<p class="mt-6 text-[13px] leading-relaxed text-white/50">Há mais de cinco anos, Ismael Klann transforma peixe, arroz e tradição nos pratos do Ka-Sasushi.</p>
-<div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-<a href="https://instagram.com/kasasushi_" target="_blank" class="border border-white/15 rounded-sm px-6 py-3 text-xs text-white/70">📷 @kasasushi_</a>
-<a href="https://instagram.com/ismael_mallmann" target="_blank" class="border border-white/15 rounded-sm px-6 py-3 text-xs text-white/70">📷 @ismael_mallmann</a>
-</div>
-</div>
-<div class="mt-20"><div class="flex items-center justify-center gap-3"><div class="w-8 h-8 rounded-full bg-[#a33]/90 flex items-center justify-center">鮨</div><h3 class="font-heading text-[20px] tracking-[0.15em]">KA-SÁ<span class="text-[#c8a882]">SUSHI</span></h3></div><p class="mt-6 text-[12px] text-white/40">Terça a domingo · 18h às 23h30 · Delivery e retirada</p></div>
-</footer>
+<footer class="border-t border-white/10 bg-[#0b0b0b] px-6 md:px-20 py-16"><div class="max-w-5xl mx-auto text-center text-xs text-white/30">KA-SÁSUSHI © 2024 — Ismael Klann — O SUSHI MAN</div></footer>
 
-<!-- DOCK CORRIGIDO - MENU NO PRIMEIRO -->
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2 px-3 py-2 rounded-full dock shadow-2xl">
-<button id="btn-cat" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60">☰</button>
-<button id="btn-user" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60">👤</button>
-<button id="btn-cart" class="relative w-10 h-10 rounded-full bg-[#c8a882]/15 flex items-center justify-center text-[#c8a882]">🛒<span id="badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span></button>
-<button id="btn-points" class="w-10 h-10 rounded-full bg-green-900/20 flex items-center justify-center text-green-400/80">🎁</button>
+<!-- DOCK -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 rounded-full glass">
+  <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})" class="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center">☰</button>
+  <button id="cart-btn" onclick="toggleCart()" class="relative w-11 h-11 rounded-full bg-white/5 flex items-center justify-center">🛒<span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 w-5 h-5 rounded-full text-[11px] flex items-center justify-center hidden">0</span></button>
+  <button onclick="openWhatsApp()" class="w-11 h-11 rounded-full bg-[#25d366] flex items-center justify-center text-white font-bold">✓</button>
 </div>
 
-<div id="modal-categories" class="fixed inset-0 bg-black/80 z-[70] hidden flex items-end"><div class="bg-[#141414] w-full rounded-t-2xl p-6"><div class="flex justify-between mb-4"><h3 class="text-[11px] uppercase text-[#c8a882]">Categorias</h3><button onclick="closeAll()">✕</button></div><div class="grid grid-cols-2 gap-3"><button onclick="goCat('entradas')" class="bg-white/5 border border-white/10 rounded-xl p-4 text-left">前 Entradas</button><button onclick="goCat('uramaki')" class="bg-white/5 border border-white/10 rounded-xl p-4 text-left">巻 Uramaki</button><button onclick="goCat('hossomaki')" class="bg-white/5 border border-white/10 rounded-xl p-4 text-left">細 Hossomaki</button><button onclick="goCat('temaki')" class="bg-white/5 border border-white/10 rounded-xl p-4 text-left">手 Temaki</button><button onclick="goCat('sobremesa')" class="bg-white/5 border border-white/10 rounded-xl p-4 text-left">甘 Sobremesas</button></div></div></div>
-<div id="modal-user" class="fixed inset-0 bg-black/80 z-[70] hidden flex items-end"><div class="bg-[#141414] w-full rounded-t-2xl p-6"><h3 class="text-[11px] uppercase text-[#c8a882]">Minha Conta</h3><div class="mt-4"><button onclick="doCadastro()" class="w-full bg-white/5 border border-white/10 rounded-xl py-4 text-xs uppercase mb-3">Entrar - Já sou cliente</button><button onclick="doCadastro()" class="w-full bg-[#c8a882] text-black rounded-xl py-4 text-xs uppercase">Cadastrar</button></div></div></div>
-<div id="modal-cart" class="fixed inset-0 bg-black/90 z-[70] hidden flex items-end"><div class="bg-[#111] w-full rounded-t-2xl p-6 max-h-[85vh] overflow-y-auto"><div class="flex justify-between"><h2 class="font-heading text-xl">Seu Pedido</h2><button onclick="closeAll()">✕</button></div><div id="cart-items" class="mt-6 space-y-4"></div><div id="bonus-area" class="hidden mt-4 border border-green-700/30 bg-green-900/10 rounded-xl p-4"><p class="text-[10px] uppercase text-green-400">Resgate liberado</p><div id="bonus-list" class="mt-3 grid gap-2"></div></div><div class="mt-6 flex justify-between border-t border-white/10 pt-4"><span class="text-[11px] uppercase text-white/40">Total</span><span id="cart-total" class="font-heading text-[#c8a882] text-xl">R$ 0</span></div><button onclick="finalizarPedido()" class="mt-6 w-full bg-[#4a6cf7] py-4 text-[11px] uppercase rounded-sm">Finalizar Seguro</button></div></div>
-<div id="modal-points" class="fixed inset-0 bg-black/80 z-[70] hidden flex items-end"><div class="bg-[#141414] w-full rounded-t-2xl p-6"><h3 class="font-heading text-[#c8a882]">Clube - 10 pts por pedido</h3><div id="points-content" class="mt-6"></div></div></div>
+<div id="cart-panel" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-sm glass rounded-3xl p-6 hidden">
+  <div class="flex justify-between mb-5"><h3 class="font-heading text-xl">Seu Pedido</h3><button onclick="toggleCart()" class="text-2xl text-white/50">×</button></div>
+  <div id="cart-items" class="space-y-3 max-h-64 overflow-y-auto mb-5"></div>
+  <div class="flex justify-between"><span class="text-white/60 text-sm">Total:</span><span id="cart-total" class="text-[#d9b37b] font-bold">R$ 0,00</span></div>
+  <button onclick="openWhatsApp()" class="w-full mt-4 bg-[#25d366] py-3 rounded-full font-bold">Confirmar no WhatsApp</button>
+</div>
 
 <script>
-const menuData = {
+const images = {
+  gyoza: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400',
+  edamame: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400',
+  sunomono: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=400',
+  ceviche: 'https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?w=400',
+  california: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400',
+  kani: 'https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=400',
+  hot: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=400',
+  veg: 'https://images.unsplash.com/photo-1546069901-eacef0df6022?w=400',
+  temaki: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=400',
+  dorayaki: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400',
+};
+
+const menu = {
   entradas: [
-    {name:"Bolinho de Salmão", desc:"6 un. - bolinhos de salmão fritos, cream cheese e cebolinha.", price:40, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=300", cat:"entradas"},
-    {name:"Batata Frita", desc:"300g de batata frita palito, com tempero especial.", price:26, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300", cat:"entradas"},
-    {name:"Guioza Suíno/Bovino", desc:"6 un. - guioza de carne suína (pastel frito oriental).", price:40, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=300", cat:"entradas"},
-    {name:"Ceviche Especial", desc:"Cubos de tilápia, salmão e camarão marinados, cebola roxa, pimentões, finalizado com gergelim.", price:68, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300", cat:"entradas"},
-    {name:"Sunomono", desc:"Salada de pepino japonês com molho de su, finalizado com gergelim.", price:12, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1546069901-604d0f7d4e1c?w=300", cat:"entradas"},
-    {name:"Salmão Tamago", desc:"Fatias de sashimi de salmão e omelete de ovos, finalizado com tarê.", price:50, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300", cat:"entradas"},
-    {name:"Missoshiro", desc:"Sopa de missô com tofu e cebolinha.", price:18, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1547592180-85f173990554?w=300", cat:"entradas"},
-    {name:"Shimeji na Manteiga", desc:"Shimeji salteado na manteiga com shoyu.", price:32, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=300", cat:"entradas"},
+    { id:"e1", name:"Gyoza de Frango", desc:"Massa crocante com molho shoyu clássico.", price:28, img: images.gyoza },
+    { id:"e2", name:"Edamame Salgado", desc:"Vagem fresca com flor de sal himalaia.", price:22, img: images.edamame },
+    { id:"e3", name:"Sunomono", desc:"Pepino e cenoura em vinagre de arroz.", price:24, img: images.sunomono },
+    { id:"e4", name:"Ceviche de Salmão", desc:"Salmão em cítrico e óleo de gergelim.", price:36, img: images.ceviche },
   ],
   uramaki: [
-    {name:"Uramaki Major (Premium da Casa)", desc:"Salmão e cream cheese premium, coberto com lâmina de salmão fresco, molho de ostra, cogumelos salteados e crispy de harumaki.", price:68, unit:"10un", thumb:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300", cat:"uramaki"},
-    {name:"Uramaki TT", desc:"Salmão grelhado com cream cheese, coberto com lâmina de salmão maçaricado e finalizado com tarê.", price:24, unit:"5un", thumb:"https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=300", cat:"uramaki"},
-    {name:"Uramaki Couve Crispy", desc:"Camarão com cream cheese, finalizado com crispy artesanal de couve.", price:46, unit:"10un", thumb:"https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=300", cat:"uramaki"},
-    {name:"Uramaki Nachos", desc:"Salmão, cream cheese, nachos crocante e molho especial.", price:32, unit:"10un", thumb:"https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=300", cat:"uramaki"},
-    {name:"Uramaki Filadélfia", desc:"Salmão fresco e cream cheese, clássico.", price:22, unit:"5un", thumb:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300", cat:"uramaki"},
-    {name:"Uramaki Skin", desc:"Pele de salmão grelhada com tarê e gergelim.", price:18, unit:"5un", thumb:"https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=300", cat:"uramaki"},
-    {name:"Uramaki Califórnia", desc:"Kani, pepino e manga.", price:20, unit:"5un", thumb:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300", cat:"uramaki"},
-    {name:"Uramaki Ebiten", desc:"Camarão empanado com cream cheese.", price:28, unit:"5un", thumb:"https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=300", cat:"uramaki"},
+    { id:"u1", name:"California Gold", desc:"Salmão, abacate e pepino.", price:34, img: images.california },
+    { id:"u2", name:"Kani Crunch", desc:"Camarão tempurá e kani.", price:32, img: images.kani },
+    { id:"u3", name:"Hot Tuna", desc:"Atum, goiaba e pimenta.", price:38, img: images.hot },
+    { id:"u4", name:"Vegetal Zen", desc:"Abobrinha e cream cheese leve.", price:29, img: images.veg },
   ],
   hossomaki: [
-    {name:"Hossomaki Filadélfia", desc:"Salmão e cream cheese enrolado em alga.", price:14, unit:"6un", thumb:"https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=300", cat:"hossomaki"},
-    {name:"Hossomaki Kappamaki", desc:"Pepino japonês e gergelim.", price:10, unit:"6un", thumb:"https://images.unsplash.com/photo-1546069901-604d0f7d4e1c?w=300", cat:"hossomaki"},
+    { id:"h1", name:"Salmão Nori", desc:"Salmão fresco e arroz temperado.", price:27, img: images.california },
+    { id:"h2", name:"Pepino Fresco", desc:"Clássico e refrescante.", price:22, img: images.veg },
+    { id:"h3", name:"Atum Kuro", desc:"Atum com toque de shiso.", price:31, img: images.hot },
+    { id:"h4", name:"Camarão Dashi", desc:"Perfil sutil e sofisticado.", price:30, img: images.kani },
   ],
   temaki: [
-    {name:"Temaki Filadélfia", desc:"Salmão, cream cheese e cebolinha.", price:24, unit:"1un", thumb:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300", cat:"temaki"},
-    {name:"Temaki Skin", desc:"Pele de salmão grelhada com tarê.", price:18, unit:"1un", thumb:"https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=300", cat:"temaki"},
+    { id:"t1", name:"Temaki Salmão", desc:"Cone crocante com salmão fresco.", price:33, img: images.temaki },
+    { id:"t2", name:"Temaki Atum", desc:"Atum e ponzu.", price:34, img: images.temaki },
+    { id:"t3", name:"Temaki Camarão", desc:"Camarão com manga.", price:35, img: images.temaki },
+    { id:"t4", name:"Temaki Veggie", desc:"Abacate e pepino.", price:28, img: images.temaki },
   ],
   sobremesa: [
-    {name:"Soul Experience", desc:"Cream cheese e goiabada, empanado crocante.", price:28, unit:"6un", thumb:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300", cat:"sobremesa"},
-    {name:"Harumaki de Doce de Leite", desc:"6 un. - massa crocante com doce de leite.", price:24, unit:"1 porção", thumb:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300", cat:"sobremesa"},
+    { id:"s1", name:"Dorayaki", desc:"Panqueca com adzuki.", price:18, img: images.dorayaki },
+    { id:"s2", name:"Mochi Morango", desc:"Arroz com morango.", price:17, img: images.dorayaki },
+    { id:"s3", name:"Yuzu Cheesecake", desc:"Citrinos orientais.", price:22, img: images.dorayaki },
+    { id:"s4", name:"Pudim Matcha", desc:"Cremoso com matcha.", price:19, img: images.dorayaki },
   ]
 };
 
-const priceMap=new Map();Object.values(menuData).flat().forEach(i=>priceMap.set(i.name,i.price));
-let cart=JSON.parse(localStorage.getItem('ks_cart')||'{}');
-let customer=JSON.parse(localStorage.getItem('ks_customer')||'null');
-let bonusSelected=JSON.parse(localStorage.getItem('ks_bonus')||'null');
+let cart = [];
+const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
 
-function renderAll(){
-  Object.keys(menuData).forEach(cat=>{
-    const el=document.getElementById('list-'+cat); if(!el) return;
-    el.innerHTML=menuData[cat].map(item=>{
-      const q=cart[item.name]?.qty||0;
-      return `<div class="flex gap-4 border-b border-white/[0.06] py-6"><img src="${item.thumb}" onerror="this.src='https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300'" class="w-[72px] h-[72px] object-cover rounded-sm flex-shrink-0"><div class="flex-1"><div class="flex justify-between gap-2"><h3 class="text-[13px] text-white font-medium">${item.name}</h3><span class="text-[11px] text-white/40 whitespace-nowrap">R$ ${item.price} - ${item.unit}</span></div><p class="text-[11px] text-white/40 mt-1">${item.desc}</p><div class="mt-3">${q===0?`<button onclick="changeQty('${item.name.replace(/'/g,"\\'")}',1)" class="bg-[#8a2a2a]/80 text-white text-[10px] uppercase px-4 py-2 rounded-sm">ADICIONAR</button>`:`<div class="flex items-center gap-3"><div class="flex items-center border border-white/10 rounded-sm"><button onclick="changeQty('${item.name.replace(/'/g,"\\'")}',-1)" class="w-7 h-7 text-xs">-</button><span class="w-6 text-center text-xs">${q}</span><button onclick="changeQty('${item.name.replace(/'/g,"\\'")}',1)" class="w-7 h-7 text-xs">+</button></div><span class="text-[10px] uppercase tracking-widest text-white/30">No Carrinho</span></div>`}</div></div></div>`;
-    }).join('');
+function renderMenus(){
+  Object.keys(menu).forEach(key=>{
+    document.getElementById(key).innerHTML = menu[key].map(item=>`
+      <div class="menu-card rounded-2xl overflow-hidden">
+        <img src="${item.img}" class="h-[180px] w-full object-cover" />
+        <div class="p-5">
+          <h3 class="font-heading text-lg">${item.name}</h3>
+          <p class="text-xs text-white/50 mb-3 mt-1">${item.desc}</p>
+          <div class="flex justify-between items-center">
+            <span class="text-[#d9b37b] font-bold">${fmt(item.price)}</span>
+            <button onclick="addCart('${item.id}')" class="px-5 py-2 bg-[#c8a882]/15 border border-[#c8a882]/40 text-[#d9b37b] rounded-full text-xs hover:bg-[#c8a882] hover:text-black transition">Adicionar</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
   });
-  document.getElementById('badge').innerText=Object.values(cart).reduce((s,i)=>s+i.qty,0);
 }
-function changeQty(name,delta){const all=Object.values(menuData).flat(); const item=all.find(i=>i.name===name); if(!item) return; const cur=cart[name]?.qty||0; const next=Math.max(0,cur+delta); if(next===0) delete cart[name]; else cart[name]={...item,qty:next}; localStorage.setItem('ks_cart',JSON.stringify(cart)); renderAll(); renderCart();}
-function renderCart(){let total=0; let html=''; for(let k in cart){const real=priceMap.get(k)||0; total+=real*cart[k].qty; html+=`<div class="flex gap-3"><img src="${cart[k].thumb}" class="w-12 h-12 object-cover rounded"><div class="flex-1"><div class="flex justify-between"><span class="text-[13px]">${k.substring(0,28)}</span><span class="text-[12px]">R$ ${real*cart[k].qty}</span></div><div class="flex items-center gap-2 mt-1"><button onclick="changeQty('${k.replace(/'/g,"\\'")}',-1)" class="w-6 h-6 border border-white/10 text-xs">-</button><span class="text-xs">${cart[k].qty}</span><button onclick="changeQty('${k.replace(/'/g,"\\'")}',1)" class="w-6 h-6 border border-white/10 text-xs">+</button></div></div></div>`;} document.getElementById('cart-items').innerHTML=html||'<p class="text-center py-10 text-white/30">Carrinho vazio</p>'; document.getElementById('cart-total').innerText='R$ '+total; const pts=customer?.points||0; const bonusArea=document.getElementById('bonus-area'); if(pts>=50 && Object.keys(cart).length>0){bonusArea.classList.remove('hidden'); const eligible=[...menuData.entradas,...menuData.sobremesa]; document.getElementById('bonus-list').innerHTML=eligible.map(it=>`<button onclick="selectBonus('${it.name.replace(/'/g,"\\'") }')" class="w-full flex gap-3 border ${bonusSelected?.name===it.name?'border-[#c8a882] bg-[#c8a882]/10':'border-white/10 bg-white/5'} rounded-lg p-3 text-left"><img src="${it.thumb}" class="w-10 h-10 object-cover rounded"><div><p class="text-xs">${it.name}</p><p class="text-[10px] text-green-400">GRÁTIS</p></div></button>`).join('');} else bonusArea.classList.add('hidden');}
-function selectBonus(name){const all=[...menuData.entradas,...menuData.sobremesa]; bonusSelected=all.find(i=>i.name===name); localStorage.setItem('ks_bonus',JSON.stringify(bonusSelected)); renderCart(); alert('Bônus: '+name+' grátis');}
-function closeAll(){document.querySelectorAll('[id^=modal-]').forEach(m=>m.classList.add('hidden'));}
-function goCat(id){closeAll();document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
-function doCadastro(){const name=prompt('Nome:'); const email=prompt('Email:'); if(!name||!email) return; customer={id:Date.now(),name,email:email.toLowerCase(),points:customer?.points||0,owner_id:email.toLowerCase()}; localStorage.setItem('ks_customer',JSON.stringify(customer)); alert('Cadastro ok'); closeAll();}
-function finalizarPedido(){if(!customer) return alert('Faça cadastro botão 👤'); if(Object.keys(cart).length===0) return alert('Vazio'); let total=0; for(let k in cart){total+=priceMap.get(k)*cart[k].qty;} let usados=0; if(bonusSelected && customer.points>=50) usados=50; customer.points=(customer.points||0)+10-usados; localStorage.setItem('ks_customer',JSON.stringify(customer)); cart={}; bonusSelected=null; localStorage.setItem('ks_cart','{}'); localStorage.removeItem('ks_bonus'); renderAll(); renderCart(); closeAll(); alert('✅ Pedido confirmado! Total: R$ '+total+' | Pontos: '+customer.points);}
-document.getElementById('btn-cat').onclick=()=>document.getElementById('modal-categories').classList.remove('hidden');
-document.getElementById('btn-user').onclick=()=>document.getElementById('modal-user').classList.remove('hidden');
-document.getElementById('btn-cart').onclick=()=>{document.getElementById('modal-cart').classList.remove('hidden'); renderCart();};
-document.getElementById('btn-points').onclick=()=>{document.getElementById('modal-points').classList.remove('hidden'); document.getElementById('points-content').innerHTML=`<p class="text-sm">${customer?.points||0} / 50 pontos</p><div class="h-2 bg-white/10 rounded-full mt-2"><div class="h-full bg-[#c8a882]" style="width:${Math.min(100,((customer?.points||0)/50)*100)}%"></div></div><div class="mt-4 grid gap-2">${[...menuData.entradas,...menuData.sobremesa].map(it=>`<div class="border border-white/10 rounded-lg p-3 flex gap-3"><img src="${it.thumb}" class="w-10 h-10 object-cover rounded"><div><p class="text-xs">${it.name}</p><p class="text-[10px] text-green-400">${(customer?.points||0)>=50?'GRÁTIS':'Bloqueado'}</p></div></div>`).join('')}</div>`;};
-renderAll();
+function getProduct(id){ for(const c of Object.values(menu)){ const f=c.find(i=>i.id===id); if(f) return f; } }
+function addCart(id){ const p=getProduct(id); const e=cart.find(i=>i.id===id); if(e) e.qty++; else cart.push({...p,qty:1}); updateCart(); document.getElementById('cart-panel').classList.remove('hidden'); }
+function updateQty(id,d){ const i=cart.find(x=>x.id===id); if(!i) return; i.qty+=d; if(i.qty<=0) cart=cart.filter(x=>x.id!==id); updateCart(); }
+function updateCart(){
+  const count=cart.reduce((s,i)=>s+i.qty,0), total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('cart-count').textContent=count;
+  document.getElementById('cart-count').classList.toggle('hidden',count===0);
+  document.getElementById('cart-total').textContent=fmt(total);
+  document.getElementById('cart-items').innerHTML = cart.length===0? '<p class="text-center text-white/40 text-sm py-6">Carrinho vazio</p>' : cart.map(i=>`
+    <div class="flex justify-between items-center bg-white/[0.04] p-3 rounded-xl">
+      <div><p class="text-sm font-medium">${i.name} x${i.qty}</p><p class="text-xs text-white/40">${fmt(i.price*i.qty)}</p></div>
+      <div class="flex gap-2"><button onclick="updateQty('${i.id}',-1)" class="w-6 h-6 bg-white/10 rounded">−</button><button onclick="updateQty('${i.id}',1)" class="w-6 h-6 bg-[#c8a882]/20 rounded">+</button></div>
+    </div>
+  `).join('');
+}
+function toggleCart(){ document.getElementById('cart-panel').classList.toggle('hidden'); }
+function openWhatsApp(){
+  if(!cart.length) return alert('Adicione itens primeiro!');
+  let msg='*🍣 Pedido KA-SÁSUSHI*\n\n'; let total=0;
+  cart.forEach(i=>{ total+=i.price*i.qty; msg+=`• ${i.name} (x${i.qty}) - ${fmt(i.price*i.qty)}\n`; });
+  msg+=`\n*Total: ${fmt(total)}*`;
+  window.open(`https://wa.me/5585988889999?text=${encodeURIComponent(msg)}`,'_blank');
+}
+renderMenus(); updateCart();
 </script>
 </body>
 </html>
