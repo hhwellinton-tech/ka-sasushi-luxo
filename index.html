@@ -1,61 +1,370 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>KA-SÁSUSHI — Menu Luxury 3.0 | Videira SC</title>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"KA-SÁSUSHI","address":{"@type":"PostalAddress","addressLocality":"Videira","addressRegion":"SC"}}</script>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>body{background:#080808;color:#f4efe8;font-family:Inter}.font-heading{font-family:Cinzel}.glass{background:rgba(15,15,15,.92);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)}.menu-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);transition:.25s}.menu-card:hover{transform:translateY(-6px);border-color:#c8a882}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KA-SÁSUSHI — Menu Luxury</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --gold: #c8a882;
+      --text: #f4efe8;
+      --line: rgba(255,255,255,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+    .font-heading { font-family: 'Cinzel', serif; }
+    .gold { color: var(--gold); }
+    .glass {
+      background: rgba(15,15,15,0.92);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(20px);
+    }
+    .menu-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .menu-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,168,130,0.55);
+    }
+    .hero-pattern {
+      background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.75)),
+      url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+      transition: all .2s ease;
+    }
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(37, 211, 102, 0.4);
+    }
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ef4444;
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body>
-<header class="relative h-[90vh] flex items-center bg-cover bg-center" style="background-image:linear-gradient(rgba(0,0,0,.6),#000),url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1600')">
-<nav class="absolute top-0 w-full px-6 md:px-16 py-6 flex justify-between"><span class="font-heading tracking-widest">KA-SÁ<span class="text-[#c8a882]">SUSHI</span></span><span class="text-[10px] tracking-widest opacity-50">VIDEIRA • SC • DELIVERY</span></nav>
-<div class="px-6 md:px-20"><p class="text-[10px] tracking-[0.35em] opacity-40">EDOMAE • TRADIÇÃO AUTÊNTICA</p><h1 class="font-heading text-6xl md:text-8xl mt-4">KA-SÁ<span class="text-[#c8a882]">SUSHI</span></h1><button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})" class="mt-8 px-10 py-4 border border-[#c8a882] text-[#c8a882] rounded-full uppercase text-sm">Ver cardápio</button></div>
-</header>
+<body class="pb-32">
 
-<main id="menu" class="px-6 md:px-20 py-20 max-w-[1400px] mx-auto">
-<div id="grid" class="grid gap-6 md:grid-cols-3"></div>
-</main>
+  <header class="hero-pattern relative h-screen overflow-hidden flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
-<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-2 px-4 py-3 rounded-full glass">
-<button onclick="scrollTo(0,0)" class="w-11 h-11 bg-white/5 rounded-full">☰</button>
-<button onclick="toggleCart()" class="relative w-11 h-11 bg-white/5 rounded-full">🛒<span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-[10px] w-5 h-5 rounded-full hidden flex items-center justify-center">0</span></button>
-<button onclick="openWA()" class="w-11 h-11 bg-[#25d366] rounded-full">✓</button>
-</div>
+    <nav class="absolute top-0 left-0 right-0 z-20 px-6 md:px-16 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full border border-white/20 bg-black/40 flex items-center justify-center text-[#d9b37b] text-sm font-bold">鮨</div>
+        <div class="font-heading text-lg tracking-widest">KA-SÁ<span class="gold">SUSHI</span></div>
+      </div>
+    </nav>
 
-<div id="cart-panel" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-sm glass rounded-3xl p-6 hidden">
-<div class="flex justify-between mb-4"><h3 class="font-heading">Seu Pedido</h3><button onclick="toggleCart()">×</button></div>
-<div id="cart-items" class="max-h-64 overflow-y-auto space-y-2 mb-4"></div>
-<div class="flex justify-between font-bold"><span>Total</span><span id="cart-total" class="text-[#c8a882]">R$ 0,00</span></div>
-<button onclick="openWA()" class="w-full mt-4 bg-[#25d366] py-3 rounded-full font-bold">Confirmar no WhatsApp</button>
-</div>
+    <div class="relative z-10 px-6 md:px-20 max-w-2xl">
+      <p class="text-[9px] tracking-[0.3em] uppercase text-white/50 mb-6">Edomae · Tradição Oriental Autêntica</p>
+      <h1 class="font-heading text-6xl md:text-8xl leading-none">
+        KA-SÁ<span class="gold">SUSHI</span>
+      </h1>
+      <p class="mt-8 italic text-white/70 text-lg max-w-sm">"Carregue a tradição em seu bolso."</p>
+      <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})" class="mt-8 px-8 py-3 border border-[#c8a882] text-[#c8a882] rounded-full text-sm tracking-[0.15em] uppercase hover:bg-[#c8a882]/10 transition">
+        Ver cardápio
+      </button>
+    </div>
+  </header>
 
-<script>
-const MENU=[
-{name:"Gyoza de Frango",desc:"Massa crocante + shoyu",price:28,img:"https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500",cat:"Entradas"},
-{name:"Edamame Salgado",desc:"Flor de sal himalaia",price:22,img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500",cat:"Entradas"},
-{name:"California Gold",desc:"Salmão, abacate, pepino",price:34,img:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=500",cat:"Uramaki"},
-{name:"Kani Crunch",desc:"Camarão tempurá",price:32,img:"https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=500",cat:"Uramaki"},
-{name:"Hot Tuna",desc:"Atum, goiaba, pimenta",price:38,img:"https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=500",cat:"Uramaki"},
-{name:"Salmão Nori",desc:"Salmão fresco",price:27,img:"https://images.unsplash.com/photo-1553621042-f6e147245754?w=500",cat:"Hossomaki"},
-{name:"Temaki Salmão",desc:"Cone crocante",price:33,img:"https://images.unsplash.com/photo-1555126634-323283e090fa?w=500",cat:"Temaki"},
-{name:"Mochi Morango",desc:"Arroz + morango",price:17,img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500",cat:"Sobremesas"},
-];
-let cart=JSON.parse(localStorage.getItem('ka_cart')||'[]');
-const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
-function render(){document.getElementById('grid').innerHTML=MENU.map(m=>`<div class="menu-card rounded-2xl overflow-hidden"><img src="${m.img}" class="h-[180px] w-full object-cover"/><div class="p-5"><p class="text-[10px] tracking-widest text-[#c8a882]">${m.cat}</p><h3 class="font-heading mt-1">${m.name}</h3><p class="text-xs opacity-50 mt-1">${m.desc}</p><div class="flex justify-between mt-4"><span class="text-[#c8a882] font-bold">${fmt(m.price)}</span><button onclick="add('${m.name}')" class="px-4 py-1 border border-[#c8a882]/40 rounded-full text-xs">Adicionar</button></div></div></div>`).join(''); update();}
-function add(name){const p=MENU.find(x=>x.name===name);const e=cart.find(x=>x.name===name); if(e) e.qty++; else cart.push({...p,qty:1}); save();}
-function save(){localStorage.setItem('ka_cart',JSON.stringify(cart)); update(); document.getElementById('cart-panel').classList.remove('hidden');}
-function update(){
-const c=cart.reduce((s,i)=>s+i.qty,0), t=cart.reduce((s,i)=>s+i.price*i.qty,0);
-document.getElementById('cart-count').innerText=c; document.getElementById('cart-count').classList.toggle('hidden',c===0);
-document.getElementById('cart-total').innerText=fmt(t);
-document.getElementById('cart-items').innerHTML=cart.length?cart.map(i=>`<div class="flex justify-between bg-white/5 p-3 rounded-xl"><span class="text-sm">${i.name} x${i.qty}</span><span class="text-sm text-[#c8a882]">${fmt(i.price*i.qty)}</span></div>`).join(''):'<p class="text-center opacity-40 text-sm py-6">Carrinho vazio</p>';
-}
-function toggleCart(){document.getElementById('cart-panel').classList.toggle('hidden');}
-function openWA(){if(!cart.length) return alert('Carrinho vazio');let msg='*🍣 Pedido KA-SÁSUSHI - Videira SC*\n\n';let tot=0;cart.forEach(i=>{tot+=i.price*i.qty;msg+=`• ${i.name} x${i.qty} - ${fmt(i.price*i.qty)}\n`});msg+=`\n*Total: ${fmt(tot)}*`;window.open(`https://wa.me/5549999999999?text=${encodeURIComponent(msg)}`,'_blank');}
-render();
-</script>
+  <main id="menu" class="px-6 md:px-20 py-20">
+    <section class="mb-28">
+      <div class="flex items-center gap-3 mb-12">
+        <span class="text-[#8a1d1d]/60 text-3xl">前</span>
+        <h2 class="font-heading text-3xl md:text-4xl tracking-wide">Entradas</h2>
+      </div>
+      <div id="entradas" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <section class="mb-28">
+      <div class="flex items-center gap-3 mb-12">
+        <span class="text-[#8a1d1d]/60 text-3xl">巻</span>
+        <h2 class="font-heading text-3xl md:text-4xl tracking-wide">Uramaki</h2>
+      </div>
+      <div id="uramaki" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <section class="mb-28">
+      <div class="flex items-center gap-3 mb-12">
+        <span class="text-[#8a1d1d]/60 text-3xl">細</span>
+        <h2 class="font-heading text-3xl md:text-4xl tracking-wide">Hossomaki</h2>
+      </div>
+      <div id="hossomaki" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <section class="mb-28">
+      <div class="flex items-center gap-3 mb-12">
+        <span class="text-[#8a1d1d]/60 text-3xl">手</span>
+        <h2 class="font-heading text-3xl md:text-4xl tracking-wide">Temaki</h2>
+      </div>
+      <div id="temaki" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <section class="mb-28">
+      <div class="flex items-center gap-3 mb-12">
+        <span class="text-[#8a1d1d]/60 text-3xl">甘</span>
+        <h2 class="font-heading text-3xl md:text-4xl tracking-wide">Sobremesas</h2>
+      </div>
+      <div id="sobremesa" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-[#0b0b0b] px-6 md:px-20 py-20">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <div class="w-16 h-16 rounded-full border border-[#c8a882]/40 bg-[#171a2a] flex items-center justify-center text-3xl text-[#d8b280] font-heading mb-6">匠</div>
+          <h3 class="font-heading text-4xl mb-2">Ismael Klann</h3>
+          <p class="text-xs tracking-[0.3em] uppercase text-[#c8a882] mb-6">O SUSHI MAN</p>
+          <p class="text-sm text-white/70 leading-relaxed mb-4">
+            Há mais de cinco anos, Ismael Klann transforma peixe, arroz e tradição nos pratos do Ka-Sasushi. Cada peça é uma obra de arte.
+          </p>
+          <p class="italic text-white/80 text-base">
+            "Por trás de cada corte existe um mestre."
+          </p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <div class="flex flex-col gap-3 mb-8">
+            <a href="https://instagram.com/kasasushi_" target="_blank" class="inline-flex items-center gap-2 text-[#d9b37b] hover:text-[#f0d9b3] transition">
+              <span class="text-xl">📷</span>
+              <span class="text-sm">@kasasushi_</span>
+            </a>
+            <a href="https://instagram.com/ismael_mallmann" target="_blank" class="inline-flex items-center gap-2 text-[#d9b37b] hover:text-[#f0d9b3] transition">
+              <span class="text-xl">📷</span>
+              <span class="text-sm">@ismael_mallmann</span>
+            </a>
+          </div>
+          <div class="space-y-2 text-sm text-white/60">
+            <p class="font-semibold text-white">Horário de funcionamento</p>
+            <p>Terça a domingo</p>
+            <p>18h às 23h30</p>
+            <p>Delivery e retirada</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8 text-center text-xs text-white/40">
+        <p>KA-SÁSUSHI © 2024 — Todos os direitos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 rounded-full glass">
+    <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})" class="w-11 h-11 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 transition" title="Menu">
+      ☰
+    </button>
+    <button onclick="document.querySelector('footer').scrollIntoView({behavior:'smooth'})" class="w-11 h-11 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 transition" title="Contato">
+      👤
+    </button>
+    <button id="cart-btn" onclick="toggleCart()" class="relative w-11 h-11 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/70 transition" title="Carrinho">
+      🛒
+      <span id="cart-count" class="cart-badge hidden">0</span>
+    </button>
+    <button id="whatsapp-btn" onclick="openWhatsApp()" class="w-11 h-11 rounded-full whatsapp-btn flex items-center justify-center text-white font-bold transition" title="Pedir agora">
+      ✓
+    </button>
+  </div>
+
+  <div id="cart-panel" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm glass rounded-3xl p-6 hidden">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="font-heading text-xl">Seu Pedido</h3>
+      <button onclick="toggleCart()" class="text-2xl leading-none text-white/60 hover:text-white/80">×</button>
+    </div>
+
+    <div id="cart-items" class="space-y-3 max-h-64 overflow-y-auto mb-5 border-b border-white/10 pb-5">
+      <p class="text-center text-white/50 text-sm py-8">Seu carrinho está vazio</p>
+    </div>
+
+    <div class="space-y-3">
+      <div class="flex justify-between items-center">
+        <span class="text-white/60 text-sm">Subtotal:</span>
+        <span id="cart-total" class="text-[#d9b37b] font-semibold">R$ 0,00</span>
+      </div>
+      <button onclick="openWhatsApp()" class="w-full bg-gradient-to-r from-[#25d366] to-[#20ba5a] text-white font-semibold py-3 rounded-full hover:shadow-lg transition">
+        Confirmar pedido no WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const menu = {
+      entradas: [
+        { id: "e1", name: "Gyoza de Frango", desc: "Massa crocante com recheio suculento e molho shoyu clássico.", price: 28 },
+        { id: "e2", name: "Edamame Salgado", desc: "Vagem fresca, levada ao sal de flor de sal himalaia.", price: 22 },
+        { id: "e3", name: "Sunomono", desc: "Pepino e cenoura em vinagre de arroz com gengibre fresco.", price: 24 },
+        { id: "e4", name: "Ceviche de Salmão", desc: "Fatias de salmão em cítrico, shoyu e óleo de gergelim.", price: 36 }
+      ],
+      uramaki: [
+        { id: "u1", name: "California Gold", desc: "Salmão, abacate e pepino em arroz por fora.", price: 34 },
+        { id: "u2", name: "Kani Crunch", desc: "Camarão tempurá, kani e molho de alho poró artesanal.", price: 32 },
+        { id: "u3", name: "Hot Tuna", desc: "Atum, goiaba, pimenta e maionese japonesa.", price: 38 },
+        { id: "u4", name: "Vegetal Zen", desc: "Abobrinha, cenoura, alga nori e cream cheese leve.", price: 29 }
+      ],
+      hossomaki: [
+        { id: "h1", name: "Salmão Nori", desc: "Rolo delicado com salmão fresco e arroz bem temperado.", price: 27 },
+        { id: "h2", name: "Pepino Fresco", desc: "Clássico, leve e extremamente refrescante.", price: 22 },
+        { id: "h3", name: "Atum Kuro", desc: "Atum em fatias finas com leve toque de shiso.", price: 31 },
+        { id: "h4", name: "Camarão Dashi", desc: "Camarão com dashi em perfil sutil e sofisticado.", price: 30 }
+      ],
+      temaki: [
+        { id: "t1", name: "Temaki Salmão", desc: "Cone crocante com salmão fresco e cebolinha.", price: 33 },
+        { id: "t2", name: "Temaki Atum", desc: "Atum, molho ponzu e semente de gergelim tostado.", price: 34 },
+        { id: "t3", name: "Temaki Camarão", desc: "Camarão recheado com manga e cebolinha fresca.", price: 35 },
+        { id: "t4", name: "Temaki Veggie", desc: "Abacate, pepino, manga e alga nori.", price: 28 }
+      ],
+      sobremesa: [
+        { id: "s1", name: "Dorayaki", desc: "Panqueca japonesa com doce de feijão adzuki.", price: 18 },
+        { id: "s2", name: "Mochi Morango", desc: "Massa de arroz com morango e leite condensado.", price: 17 },
+        { id: "s3", name: "Yuzu Cheesecake", desc: "Cheesecake com citrinos orientais.", price: 22 },
+        { id: "s4", name: "Pudim Matcha", desc: "Cremoso com matcha e leve amargor.", price: 19 }
+      ]
+    };
+
+    let cart = [];
+
+    function formatPrice(val) {
+      return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+    }
+
+    function renderMenus() {
+      Object.keys(menu).forEach(key => {
+        const container = document.getElementById(key);
+        container.innerHTML = menu[key].map(item => `
+          <div class="menu-card rounded-2xl overflow-hidden p-5">
+            <div class="aspect-video bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] rounded-lg mb-4 flex items-center justify-center text-4xl">
+              🍣
+            </div>
+            <h3 class="font-heading text-lg mb-1">${item.name}</h3>
+            <p class="text-xs text-white/60 mb-3">${item.desc}</p>
+            <div class="flex justify-between items-center">
+              <span class="text-[#d9b37b] font-semibold">${formatPrice(item.price)}</span>
+              <button onclick="addCart('${item.id}')" class="px-4 py-2 bg-[#c8a882]/15 border border-[#c8a882]/40 text-[#d9b37b] rounded-full text-xs hover:bg-[#c8a882]/25 transition">
+                Adicionar
+              </button>
+            </div>
+          </div>
+        `).join('');
+      });
+    }
+
+    function getProduct(id) {
+      for (const category of Object.values(menu)) {
+        const item = category.find(i => i.id === id);
+        if (item) return item;
+      }
+      return null;
+    }
+
+    function addCart(id) {
+      const product = getProduct(id);
+      if (!product) return;
+
+      const existing = cart.find(i => i.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+
+      updateCart();
+      document.getElementById('cart-panel').classList.remove('hidden');
+    }
+
+    function removeCart(id) {
+      cart = cart.filter(i => i.id !== id);
+      updateCart();
+    }
+
+    function updateQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) removeCart(id);
+        else updateCart();
+      }
+    }
+
+    function updateCart() {
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+      if (count > 0) {
+        document.getElementById('cart-count').classList.remove('hidden');
+        document.getElementById('cart-count').textContent = count;
+      } else {
+        document.getElementById('cart-count').classList.add('hidden');
+      }
+
+      const items = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        items.innerHTML = '<p class=\"text-center text-white/50 text-sm py-8\">Seu carrinho está vazio</p>';
+      } else {
+        items.innerHTML = cart.map(i => `
+          <div class="flex items-center justify-between bg-white/[0.04] p-3 rounded-lg">
+            <div class="flex-1">
+              <p class="text-sm font-medium">${i.name}</p>
+              <p class="text-xs text-white/50">${formatPrice(i.price)}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="updateQty('${i.id}', -1)" class="w-6 h-6 bg-white/10 rounded text-xs">−</button>
+              <span class="w-6 text-center text-xs">${i.qty}</span>
+              <button onclick="updateQty('${i.id}', 1)" class="w-6 h-6 bg-[#c8a882]/20 rounded text-xs">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('cart-total').textContent = formatPrice(total);
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('hidden');
+    }
+
+    function openWhatsApp() {
+      if (cart.length === 0) {
+        alert('Adicione itens ao carrinho primeiro!');
+        return;
+      }
+
+      let msg = '*🍣 Pedido KA-SÁSUSHI*\n\n';
+      let total = 0;
+      cart.forEach(i => {
+        const sub = i.price * i.qty;
+        total += sub;
+        msg += `• ${i.name} (x${i.qty}) - ${formatPrice(sub)}\n`;
+      });
+      msg += `\n*Total: ${formatPrice(total)}*`;
+
+      const phone = '5585988889999';
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    renderMenus();
+    updateCart();
+  </script>
 </body>
 </html>
